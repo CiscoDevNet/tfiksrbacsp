@@ -43,7 +43,7 @@ resource "null_resource" "vm_node_init" {
 
   provisioner "remote-exec" {
     inline = [
-        "sudo /tmp/sources.list /etc/apt/sources.list",
+        "sudo cp /tmp/sources.list /etc/apt/sources.list",
         "chmod +x /tmp/rbac.sh",
         "/tmp/rbac.sh ${local.nbrapm} ${local.nbrma} ${local.nbrsim} ${local.nbrnet}",
 	"sudo docker login ${local.dockerrepo} -u ${local.dockeruser} -p ${local.dockerpass}",
